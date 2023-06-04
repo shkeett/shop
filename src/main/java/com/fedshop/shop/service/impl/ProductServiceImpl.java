@@ -32,12 +32,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product update(@RequestBody ProductDTO productDTO, Long id) throws ProductNotFoundException {
         Optional<Product> productById = productRepository.findById(id);
-        if (productById.isPresent()){
+        if (productById.isPresent()) {
             Product product = productById.get();
             product.setName(productDTO.getName());
             product.setPrice(productDTO.getPrice());
             product.setCount(productDTO.getCount());
-//            product.setCategory(productDTO.getCategory());
             Product updateProduct = productRepository.save(product);
             return updateProduct;
         }

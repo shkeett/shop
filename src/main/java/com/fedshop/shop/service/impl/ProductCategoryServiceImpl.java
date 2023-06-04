@@ -32,7 +32,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     public ProductCategory update(@RequestBody ProductCategoryDTO productCategoryDTO, Long id) throws ProductNotFoundException {
         Optional<ProductCategory> productCategoryById = productCategoryRepository.findById(id);
-        if (productCategoryById.isPresent()){
+        if (productCategoryById.isPresent()) {
             ProductCategory productCategory = productCategoryById.get();
             productCategory.setName(productCategoryDTO.getName());
             ProductCategory updateCategoryProduct = productCategoryRepository.save(productCategory);
