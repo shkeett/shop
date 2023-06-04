@@ -2,8 +2,8 @@ package com.fedshop.shop.model;
 
 public enum Permission {
 
-    DEVELOPERS_READ("developers:read"),
-    DEVELOPERS_WRITE("developers:write");
+    DEVELOPERS_READ("user:read"),
+    DEVELOPERS_WRITE("user:write");
 
     private final String permission;
 

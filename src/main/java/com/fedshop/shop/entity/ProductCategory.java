@@ -22,7 +22,4 @@ public class ProductCategory {
     @Column(name = "name_category")
     private String name;
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name="category_id", nullable=false)
-    private List<Product> product;
 }

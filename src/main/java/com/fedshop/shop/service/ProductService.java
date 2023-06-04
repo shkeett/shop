@@ -3,7 +3,6 @@ package com.fedshop.shop.service;
 import com.fedshop.shop.entity.Product;
 import com.fedshop.shop.exception.ProductNotFoundException;
 import com.fedshop.shop.model.request.ProductDTO;
-import com.fedshop.shop.model.response.ResponseProductDTO;
 
 import java.util.List;
 

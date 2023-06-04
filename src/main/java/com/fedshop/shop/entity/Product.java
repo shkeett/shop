@@ -21,7 +21,7 @@ public class Product {
     private Double price;
     private Integer count;
 
-//    @ManyToOne(cascade = CascadeType.MERGE)
-//    @JoinColumn(name="category_id", nullable=false)
-//    private ProductCategory category;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="category_id", nullable=false)
+    private ProductCategory category;
 }

@@ -22,19 +22,19 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('developers:read')")
+    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<List<Product>> getProducts() {
         return ResponseEntity.ok().body(productService.getAllProduct());
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('developers:read')")
+    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<Product> getProduct(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok().body(productService.findProductById(id));
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductDTO productDTO) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/api/product").toUriString());
@@ -42,14 +42,14 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<Product> updateProduct(@Valid @RequestBody ProductDTO productDTO, @PathVariable(name = "id") Long id) throws ProductNotFoundException {
         return ResponseEntity.ok().body(productService.update(productDTO, id));
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('developers:write')")
-    public void deleteProduct(@PathVariable(name = "id") Long id)  {
+    @PreAuthorize("hasAuthority('user:write')")
+    public void deleteProduct(@PathVariable(name = "id") Long id) {
         productService.deleteProduct(id);
     }
 }

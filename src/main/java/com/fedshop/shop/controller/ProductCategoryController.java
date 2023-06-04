@@ -22,19 +22,19 @@ public class ProductCategoryController {
     private final ProductCategoryService productCategoryService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('developers:read')")
+    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<List<ProductCategory>> getCategories() {
         return ResponseEntity.ok().body(productCategoryService.getAll());
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('developers:read')")
+    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<ProductCategory> getCategorie(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok().body(productCategoryService.findProductCategoryById(id));
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<ProductCategory> createCategory(@Valid @RequestBody ProductCategoryDTO productCategoryDTO) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/api/category").toUriString());
@@ -42,14 +42,14 @@ public class ProductCategoryController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('developers:write')")
+    @PreAuthorize("hasAuthority('user:write')")
     public ResponseEntity<ProductCategory> updateCategory(@Valid @RequestBody ProductCategoryDTO productCategoryDTO, @PathVariable(name = "id") Long id) throws ProductNotFoundException {
         return ResponseEntity.ok().body(productCategoryService.update(productCategoryDTO, id));
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('developers:write')")
-    public void deleteProductCategory(@PathVariable(name = "id") Long id)  {
+    @PreAuthorize("hasAuthority('user:write')")
+    public void deleteProductCategory(@PathVariable(name = "id") Long id) {
         productCategoryService.deleteProductCategory(id);
     }
 
